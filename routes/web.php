@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\KecamatanController;
 use App\Http\Controllers\Admin\PemetaanController;
 
 Route::view('/', '/welcome');
@@ -34,13 +33,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('contracts/destroy', 'ContractsController@massDestroy')->name('contracts.massDestroy');
     Route::resource('contracts', 'ContractsController');
 
-  Route::get('/pemetaan', [PemetaanController::class, 'index'])->name('pemetaan.index');
 //   Route::get('/kecamatan', [KecamatanController::class, 'index'])
 //   ->name('kecamatan.index');
 
-
     Route::resource('kecamatan', 'KecamatanController');
-   
+    Route::resource('pemetaan', 'PemetaanController');
 });
 
 

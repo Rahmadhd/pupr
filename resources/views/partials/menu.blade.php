@@ -67,6 +67,12 @@
                 </a>
             </li>
         @endcan
+        <li class="c-sidebar-nav-item">
+            <a href="{{ route('admin.pemetaan.index') }}" class="c-sidebar-nav-link {{ request()->is('admin/pemetaan*') ? 'active' : '' }}">
+                <i class="fa-fw fas fa-map c-sidebar-nav-icon"></i>
+                Pemetaan
+            </a>
+        </li>
         @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
             @can('profile_password_edit')
                 <li class="c-sidebar-nav-item">
@@ -77,12 +83,6 @@
                     </a>
                 </li>
             @endcan
-            <li class="c-sidebar-nav-item">
-    <a href="{{ route('admin.kecamatan.index') }}" class="c-sidebar-nav-link {{ request()->is('admin/pemetaan*') ? 'active' : '' }}">
-        <i class="fa-fw fas fa-map c-sidebar-nav-icon"></i>
-        Pemetaan
-    </a>
-</li>
 
         @endif
         <li class="c-sidebar-nav-item">
