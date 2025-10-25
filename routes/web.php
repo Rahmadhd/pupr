@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\KecamatanController;
+use App\Http\Controllers\Admin\PemetaanController;
+
 Route::view('/', '/welcome');
 Route::get('/home', function () {
     if (session('status')) {
@@ -11,6 +14,7 @@ Route::get('/home', function () {
 
 Auth::routes(['register' => false]);
 // Admin
+
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
     Route::get('/', 'HomeController@index')->name('home');
@@ -29,7 +33,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Contracts
     Route::delete('contracts/destroy', 'ContractsController@massDestroy')->name('contracts.massDestroy');
     Route::resource('contracts', 'ContractsController');
+
+  Route::get('/pemetaan', [PemetaanController::class, 'index'])->name('pemetaan.index');
+//   Route::get('/kecamatan', [KecamatanController::class, 'index'])
+//   ->name('kecamatan.index');
+
+
+    Route::resource('kecamatan', 'KecamatanController');
+   
 });
+
+
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
 // Change password
     if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php'))) {
@@ -37,3 +51,5 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
         Route::post('password', 'ChangePasswordController@update')->name('password.update');
     }
 });
+
+

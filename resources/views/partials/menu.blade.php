@@ -77,6 +77,13 @@
                     </a>
                 </li>
             @endcan
+            <li class="c-sidebar-nav-item">
+    <a href="{{ route('admin.kecamatan.index') }}" class="c-sidebar-nav-link {{ request()->is('admin/pemetaan*') ? 'active' : '' }}">
+        <i class="fa-fw fas fa-map c-sidebar-nav-icon"></i>
+        Pemetaan
+    </a>
+</li>
+
         @endif
         <li class="c-sidebar-nav-item">
             <a href="#" class="c-sidebar-nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
